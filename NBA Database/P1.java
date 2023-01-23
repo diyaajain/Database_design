@@ -39,9 +39,9 @@ public class P1 {
             } 
         else if (cmd.getCommand().equals("add_coach")) {
             String[] parameters = cmd.getParameters();
-            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), 0 , parameters[3],
-            parameters[4], Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7]), Integer.parseInt(parameters[8])
-            ,parameters[9]);
+            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), 0 , parameters[2],
+            parameters[3], Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7])
+            ,parameters[8]);
             coaches.add(c);   
 	    }
         else if (cmd.getCommand().equals("add_team")) {
