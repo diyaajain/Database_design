@@ -38,11 +38,9 @@ public class P1 {
             } 
         else if (cmd.getCommand().equals("add_coach")) {
             String[] parameters = cmd.getParameters();
-            System.out.println(parameters[0]);
-            System.out.println(parameters[9]);
-            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), Integer.parseInt(parameters[2]), (parameters[3]),
-            parameters[4], Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7]), Integer.parseInt(parameters[8])
-            ,parameters[9]);
+            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), parameters[2],
+            parameters[3], Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7])
+            ,parameters[8]);
             coaches.add(c);
             
 	    }
@@ -103,9 +101,9 @@ public class P1 {
                     values = line.split(",");
                     if (values.length == 10)
                     {
-                        Coach c = new Coach(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]), values[3], values[4],
-                        Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8])
-                        ,(values[9]));
+                        Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), parameters[2],
+                        parameters[3], Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7])
+                        ,parameters[8]);
                         coaches.add(c);
                     }
 
@@ -203,10 +201,10 @@ public class P1 {
                 {
                     System.out.println(c.getFirst_name() + "" + c.getLast_name());
                 }
-                if(field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
+                // if(field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order());
+                // {
+                //     System.out.println(c.getFirst_name() + "" + c.getLast_name());
+                // }
                 if(field.equalsIgnoreCase("firstname") && value.equalsIgnoreCase(c.getFirst_name()));
                 {
                     System.out.println(c.getFirst_name() + "" + c.getLast_name());
@@ -285,7 +283,7 @@ public class P1 {
     {
         private String coach_ID;
         private int year;
-        private int yr_order;
+        //private int yr_order;
         private String first_name;
         private String last_name;
         private int season_win;
@@ -294,12 +292,12 @@ public class P1 {
         private int playoff_loss;
         private String team;
 
-        public Coach(String coach_ID, int year, int yr_order, String first_name, String last_name,
+        public Coach(String coach_ID, int year, String first_name, String last_name,
         int season_win, int season_loss, int playoff_win, int playoff_loss, String team)
         {
             this.coach_ID = coach_ID;
             this.year = year;
-            this.yr_order = yr_order;
+            //this.yr_order = yr_order;
             this.first_name = first_name;
             this.last_name = last_name;
             this.season_win = season_win;
@@ -316,10 +314,10 @@ public class P1 {
         {
             return year;
         }
-        public int getYr_order()
-        {
-            return yr_order;
-        }
+        // public int getYr_order()
+        // {
+        //     return yr_order;
+        // }
         public String getFirst_name()
         {
             return first_name;
