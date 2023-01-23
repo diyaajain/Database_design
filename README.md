@@ -2,17 +2,8 @@
 Name: Diya Jain
 U81673988
 
-Java Program
-
 Overview
 
-This program is written in Java and is intended to perform a specific set of tasks or functions.
+This database is designed to store data related to NBA coaches and teams. Users can send simple queries to retrieve data and add new data to the database. The database has two tables (or relations) - one for coaches and one for teams.
 
-Requirements
-
-Java SE Development Kit (JDK) 8 or higher
-Any Java-compatible IDE (e.g. Eclipse, IntelliJ IDEA)
-Installation
-
-Clone or download the repository
 
