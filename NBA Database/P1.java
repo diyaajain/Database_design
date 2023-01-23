@@ -35,18 +35,19 @@ public class P1 {
                 result = doHelp();
 
 		/* You need to implement all the following commands */
+
             } 
         else if (cmd.getCommand().equals("add_coach")) {
             String[] parameters = cmd.getParameters();
-            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), parameters[3],
+            System.out.println(parameters[9]);
+            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), 0, parameters[3],
             parameters[4], Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7]), Integer.parseInt(parameters[8])
             ,parameters[9]);
-            coaches.add(c);
-            
+            coaches.add(c);   
 	    }
         else if (cmd.getCommand().equals("add_team")) {
         	String[] parameters = cmd.getParameters();
-            Team t = new Team (parameters[0],parameters[1], parameters[2], parameters[4]);
+            Team t = new Team (parameters[0],parameters[1], parameters[2], parameters[3]);
             teams.add(t);
 		}
         else if (cmd.getCommand().equals("print_coaches")) {
@@ -101,7 +102,7 @@ public class P1 {
                     values = line.split(",");
                     if (values.length == 10)
                     {
-                        Coach c = new Coach(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]), values[3], values[4],
+                        Coach c = new Coach(values[0], Integer.parseInt(values[1]), 0, values[3], values[4],
                         Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8])
                         ,(values[9]));
                         coaches.add(c);
@@ -201,10 +202,10 @@ public class P1 {
                 {
                     System.out.println(c.getFirst_name() + "" + c.getLast_name());
                 }
-                // if(field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order());
-                // {
-                //     System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                // }
+                if(field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order());
+                {
+                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
+                }
                 if(field.equalsIgnoreCase("firstname") && value.equalsIgnoreCase(c.getFirst_name()));
                 {
                     System.out.println(c.getFirst_name() + "" + c.getLast_name());
