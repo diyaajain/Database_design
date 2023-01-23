@@ -115,7 +115,7 @@ public class P1 {
                 System.out.println(parameters[0] + " file does not exist!");
             }
         }
-        else if (cmd.getCommand().equals("load_team")) 
+        else if (cmd.getCommand().equals("load_teams")) 
         {
          
             String parameters[] = cmd.getParameters();
