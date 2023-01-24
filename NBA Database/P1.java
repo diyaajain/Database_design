@@ -1,4 +1,4 @@
-
+/* Name: Diya Jain U81673988 */
 import java.io.*;
 import java.util.*;
 public class P1 {
@@ -37,132 +37,141 @@ public class P1 {
 		/* You need to implement all the following commands */
 
             } 
-        else if (cmd.getCommand().equals("add_coach")) {
-            String[] parameters = cmd.getParameters();
-            Coach c = new Coach(parameters[0], Integer.parseInt(parameters[1]), 0 , parameters[2],
-            parameters[3], Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]), Integer.parseInt(parameters[7])
-            ,parameters[8]);
-            coaches.add(c);   
+        else if (cmd.getCommand().equals("add_coach")) { /* Check if the command passed in is "add_coach" */
+            String[] arguments = cmd.getParameters(); /* Assign the rguments passed in to a string array */
+            Coach c = new Coach(arguments[0], Integer.parseInt(arguments[1]), 0 , arguments[2],
+            arguments[3], Integer.parseInt(arguments[4]), Integer.parseInt(arguments[5]), Integer.parseInt(arguments[6]), Integer.parseInt(arguments[7])
+            ,arguments[8]); /* Create a new Coach object with the given arguments */
+            coaches.add(c);   /* Add the coach object to the database */
 	    }
-        else if (cmd.getCommand().equals("add_team")) {
-        	String[] parameters = cmd.getParameters();
-            Team t = new Team (parameters[0],parameters[1], parameters[2], parameters[3]);
-            teams.add(t);
+        else if (cmd.getCommand().equals("add_team")) { /* Check if the command passed in is "add_team" */
+        	String[] arguments = cmd.getParameters(); /* Assign the arguments passed in to a string array */
+            Team t = new Team (arguments[0],arguments[1], arguments[2], arguments[3]); /* Create a new Team object with the given arguments */
+            teams.add(t);  /* Add the team object to the database */
 		}
         else if (cmd.getCommand().equals("print_coaches")) {
-            for(int i = 0; i<coaches.size();i++)
+            for(int i = 0; i<coaches.size();i++) /* Iterate through the list of coaches */
             {
-                System.out.println(coaches.get(i));
+                System.out.println(coaches.get(i)); /* Print each coach in the list */
             }
 	   	}
         else if (cmd.getCommand().equals("print_teams")) {
-            for(int i = 0; i<teams.size();i++)
+            for(int i = 0; i<teams.size();i++) /* Iterate through the list of teams */
             {
-                System.out.println(teams.get(i));
+                System.out.println(teams.get(i)); /* Print each coach in the list */
             }
 		} 
         else if (cmd.getCommand().equals("coaches_by_name")) {
-            String parameters[] = cmd.getParameters();
-            for(int i = 0; i<coaches.size();i++)
+            String arguments[] = cmd.getParameters();
+            for(int i = 0; i<coaches.size();i++) /* Loop through the coaches in the database */
             {
-                if (coaches.get(i).getLast_name().trim().equalsIgnoreCase(parameters[0].replace("+", "")))
+                if (coaches.get(i).getLast_name().trim().equalsIgnoreCase(arguments[0].replace("+", ""))) 
+                /* Check if the coach's last name (ignoring case) matches the argument passed in */
                 {
-                    System.out.println(coaches.get(i));
+                    System.out.println(coaches.get(i)); /* Print the coach's information */
                 }
             }
 		} 
         else if (cmd.getCommand().equals("teams_by_city")) {
-            String parameters[] = cmd.getParameters();
-            for(int i = 0; i<teams.size();i++)
+            String arguments[] = cmd.getParameters();
+            for(int i = 0; i<teams.size();i++) /* Loop through the list of teams */
             {
-                if (teams.get(i).getLocation().trim().equals(parameters[0]))
+                if (teams.get(i).getLocation().trim().equals(arguments[0]))
+                /* Check if the city of the current team matches the city passed in as a parameter */
                 {
-                    System.out.println(teams.get(i));
+                    System.out.println(teams.get(i)); /* Print the team if the city matches */
                 }
             }
 		}
         else if (cmd.getCommand().equals("load_coaches")) 
         {
-            String parameters[] = cmd.getParameters();
-            Scanner infile;
-            try
+            String arguments[] = cmd.getParameters();
+            Scanner infile; /* Initialize a scanner object to read from a file */
+            try 
             {
-                infile = new Scanner(new File(parameters[0]));
+                infile = new Scanner(new File(arguments[0])); 
+                /* Attempt to create a new scanner object to read the specified file */
 
                 String line;
                 String[] values;
 
-                if (infile.hasNextLine())
-                    line = infile.nextLine();
+                if (infile.hasNextLine()) /* Check if the file has a next line */
+                    line = infile.nextLine(); /* If it does, assign the next line to the line variable */
                 
                 while (infile.hasNextLine())
                 {
                     line = infile.nextLine();
-                    values = line.split(",");
-                    if (values.length == 10)
+                    values = line.split(","); 
+                    /* Split the values of the line by the comma delimiter and assign them to the values array */
+                    if (values.length == 10) 
+                    /* Check if the values array has a length of 10 */
                     {
                         Coach c = new Coach(values[0], Integer.parseInt(values[1]), 0, values[3], values[4],
                         Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8])
                         ,(values[9]));
-                        coaches.add(c);
+                        coaches.add(c); /* Add the coach object to the coaches array */
                     }
 
                 }
                 infile.close();
             }
             catch(FileNotFoundException e)
+            /* Catch a FileNotFoundException in case the specified file does not exist */
             {
-                System.out.println(parameters[0] + " file does not exist!");
+                System.out.println(arguments[0] + " file does not exist!");
             }
         }
         else if (cmd.getCommand().equals("load_teams")) 
         {
          
-            String parameters[] = cmd.getParameters();
-            Scanner infile;
+            String arguments[] = cmd.getParameters();
+            Scanner infile; /* Initialize a scanner object to read from a file */
             try
             {
-                infile = new Scanner(new File(parameters[0]));
+                infile = new Scanner(new File(arguments[0]));
 
                 String line;
                 String[] values;
 
-                if (infile.hasNextLine())
-                    line = infile.nextLine();
+                if (infile.hasNextLine()) /* Check if the file has a next line */
+                    line = infile.nextLine(); /* If it does, assign the next line to the line variable */
                 
                 while (infile.hasNextLine())
                 {
                     line = infile.nextLine();
                     values = line.split(",");
-                    if (values.length == 4)
+                    if (values.length == 4) /* Check if the values array has a length of 4 */
                     {
                         Team t = new Team(values[0], values[1], values[2], values[3]);
-                        teams.add(t);
+                        teams.add(t); /* Add the team object to the coaches array */
                     }
                 }
                 infile.close();
             }
             catch(FileNotFoundException e)
+            /* Catch a FileNotFoundException in case the specified file does not exist */
             {
-                System.out.println(parameters[0] + "file does not exist!");
+                System.out.println(arguments[0] + "file does not exist!");
             }
         }
             else if (cmd.getCommand().equals("best_coach")) 
             {
-            String parameters[] = cmd.getParameters();
-            int bestCoachNetWins = 0;
-            int netWins;
+            String arguments[] = cmd.getParameters();
+            int bestCoachNetWins = 0; /* Initialize a variable to keep track of the best coach's net wins */
+            int netWins; /* store the current coach's net wins */
             Coach c;
             
             for (int i = 0; i<coaches.size(); i++)
             {
                 c = coaches.get(i);
     
-                if (c.getYear() == Integer.parseInt(parameters[0]))
+                if (c.getYear() == Integer.parseInt(arguments[0]))
+                /* Check if the coach's year matches the given parameter */
                 {
                     netWins = (c.getSeason_win() - c.getSeason_loss() + c.getPlayoff_win() - c.getPlayoff_loss());
+                    /* Calculate the coach's net wins */
     
-                    if(netWins > bestCoachNetWins)
+                    if(netWins > bestCoachNetWins) /* Check if the coach's net wins are higher than the current highest */
                     {
                         bestCoachNetWins = netWins;
                     }
@@ -172,20 +181,20 @@ public class P1 {
             {
                 c = coaches.get(i);
     
-                if (c.getYear() == Integer.parseInt(parameters[0]))
+                if (c.getYear() == Integer.parseInt(arguments[0]))
                 {
                     netWins = (c.getSeason_win() - c.getSeason_loss() + c.getPlayoff_win() - c.getPlayoff_loss());
                     if(netWins == bestCoachNetWins)
                     {
-                        System.out.println(c.getFirst_name() + " " + c.getLast_name());
+                        System.out.println(c.getFirst_name() + " " + c.getLast_name()); /* Print the coach's name */
                     }
                 }
             }
         }    
         else if (cmd.getCommand().equals("search_coaches")) 
         {
-            String[] parameters = cmd.getParameters();
-            String[] tokens = parameters[0].split("=");
+            String[] arguments = cmd.getParameters(); /* Assign the parameters passed in to a string array */
+            String[] tokens = arguments[0].split("+"); /* Split the argument by "=" */
             String field = tokens[0];
             String value = tokens[1];
             
@@ -194,8 +203,9 @@ public class P1 {
                 Coach c = coaches.get(i);
 
                 if (field.equalsIgnoreCase("coachid") && value.equalsIgnoreCase(c.getCoach_ID()))
+                /* Check if the field is coachid and value is equal to coach_ID */
                 {
-                    System.out.println(c.getFirst_name()+ "" + c.getLast_name());
+                    System.out.println(c.getFirst_name()+ "" + c.getLast_name()); /* Print the coach's first and last name */
                 }
                 if(field.equalsIgnoreCase("year") && Integer.parseInt(value) == c.getYear());
                 {
@@ -279,7 +289,7 @@ public class P1 {
         new P1().run();
     }
     
-    private class Coach
+    private class Coach /* Coach class representing a Coach object */
     {
         private String coach_ID;
         private int year;
@@ -293,7 +303,7 @@ public class P1 {
         private String team;
 
         public Coach(String coach_ID, int year, int yr_order ,String first_name, String last_name,
-        int season_win, int season_loss, int playoff_win, int playoff_loss, String team)
+        int season_win, int season_loss, int playoff_win, int playoff_loss, String team) /* Coach class constructor */
         {
             this.coach_ID = coach_ID;
             this.year = year;
@@ -306,6 +316,7 @@ public class P1 {
             this.playoff_loss = playoff_loss;
             this.team = team;
         }
+        /* Getters for Coach class properties */
         public String getCoach_ID()
         {
             return coach_ID;
@@ -355,21 +366,21 @@ public class P1 {
 
     }
 
-    private class Team
+    private class Team /* Team class representing a Team object */
     {
         private String team_ID;
         private String location;
         private String name;
         private String league;
 
-        public Team(String team_ID, String location, String name, String league)
+        public Team(String team_ID, String location, String name, String league) /* Team class constructor */
         {
             this.team_ID = team_ID;
             this.location = location;
             this.name = name;
             this.league = league;
         }
-        public String getLocation()
+        public String getLocation() /* Getter for Team class's location property */
         {
             return location;
         }
