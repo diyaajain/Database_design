@@ -194,7 +194,7 @@ public class P1 {
         else if (cmd.getCommand().equals("search_coaches")) 
         {
             String[] arguments = cmd.getParameters(); /* Assign the parameters passed in to a string array */
-            String[] tokens = arguments[0].split("+"); /* Split the argument by "=" */
+            String[] tokens = arguments[0].split("="); /* Split the argument by "=" */
             String field = tokens[0];
             String value = tokens[1];
             
@@ -202,53 +202,28 @@ public class P1 {
             {
                 Coach c = coaches.get(i);
 
-                if (field.equalsIgnoreCase("coachid") && value.equalsIgnoreCase(c.getCoach_ID()))
-                /* Check if the field is coachid and value is equal to coach_ID */
+                if (field.equalsIgnoreCase("coachid") && value.equalsIgnoreCase(c.getCoach_ID()) ||
+                    field.equalsIgnoreCase("year") && Integer.parseInt(value) == c.getYear() ||
+                    field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order() ||
+                    field.equalsIgnoreCase("firstname") && value.equalsIgnoreCase(c.getFirst_name()) ||
+                    field.equalsIgnoreCase("lastname") && value.equalsIgnoreCase(c.getLast_name()) ||
+                    field.equalsIgnoreCase("season_win") && Integer.parseInt(value) == c.getSeason_win() ||
+                    field.equalsIgnoreCase("season_loss") && Integer.parseInt(value) == c.getSeason_loss() ||
+                    field.equalsIgnoreCase("playoff_win") && Integer.parseInt(value) == c.getPlayoff_win() ||
+                    field.equalsIgnoreCase("playoff_loss") && Integer.parseInt(value) == c.getPlayoff_loss() ||
+                    field.equalsIgnoreCase("team") && value.equalsIgnoreCase(c.getTeam())) 
                 {
-                    System.out.println(c.getFirst_name()+ "" + c.getLast_name()); /* Print the coach's first and last name */
-                }
-                if(field.equalsIgnoreCase("year") && Integer.parseInt(value) == c.getYear());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("yr_order") && Integer.parseInt(value) == c.getYr_order());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("firstname") && value.equalsIgnoreCase(c.getFirst_name()));
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("lastname") && value.equalsIgnoreCase(c.getLast_name()));
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("season_win") && Integer.parseInt(value) == c.getSeason_win());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("season_loss") && Integer.parseInt(value) == c.getSeason_loss());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("playoff_win") && Integer.parseInt(value) == c.getPlayoff_win());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("playoff_loss") && Integer.parseInt(value) == c.getPlayoff_loss());
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
-                }
-                if(field.equalsIgnoreCase("team") && value.equalsIgnoreCase(c.getTeam()));
-                {
-                    System.out.println(c.getFirst_name() + "" + c.getLast_name());
+             
+                    System.out.println(coaches.get(i));
                 }
             }
 		}
-        else if (cmd.getCommand().equals("exit")) {
+        else if (cmd.getCommand().equals("exit")) 
+        {
 			System.out.println("Leaving the database, goodbye!");
 			break;
-		} else if (cmd.getCommand().equals("")) 
+		} 
+        else if (cmd.getCommand().equals("")) 
         {
 		} 
         else 
@@ -379,6 +354,12 @@ public class P1 {
             this.location = location;
             this.name = name;
             this.league = league;
+        }
+        public String getname() {
+            return name;
+        }
+        public String getleague() {
+            return league;
         }
         public String getLocation() /* Getter for Team class's location property */
         {
